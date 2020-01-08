@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>New Project</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/projects/save" th:object="${project}" method="POST">
+            <div class="form-group">
+                <label for="projectName">Project Name</label>
+                <input type="text" class="form-control" id="projectName" th:field="${project.name}" placeholder="Project Name" />
+            </div>
+            <div class="form-group">
+                <label for="projectStage">Project Stage</label>
+                <select class="form-control" id="projectStage" th:field="${project.stage}">
+                    <option th:value="NOTSTARTED"> Not Started </option>
+                    <option th:value="INPROGRESS"> In Progress </option>
+                    <option th:value="COMPLETED"> Completed </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="projectDescription">Project Description</label>
+                <textarea type="text" class="form-control" id="projectDescription" th:field="${project.description}" placeholder="Enter Project Description" ></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Create Project</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

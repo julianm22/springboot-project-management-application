@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>New Employee</title>
+</head>
+<body>
+<div class="container">
+    <form action="/employees/save" th:object="${employee}" method="POST">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" th:field="${employee.firstName}" placeholder="John" />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" th:field="${employee.lastName}" placeholder="Doe" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" th:field="${employee.email}" placeholder="john.doe@gmail.com" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Create Employee</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
