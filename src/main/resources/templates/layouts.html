@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+    <!-- start of header -->
     <head th:fragment="header">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,23 +11,24 @@
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     </head>
+    <!-- end of header -->
 
     <!-- start of navbar code -->
     <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Project IO</a>
+        <a class="navbar-brand" th:href="@{/}">Project IO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Employees</a>
+                    <a class="nav-link" th:href="@{/employees}">Employees</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
+                    <a class="nav-link" th:href="@{/projects}">Projects</a>
                 </li>
                 <!--                <li class="nav-item">-->
                 <!--                    <a class="nav-link disabled" href="#">Disabled</a>-->
@@ -35,5 +37,55 @@
         </div>
     </nav>
     <!-- end of navbar code -->
+
+    <!-- start of list of employees -->
+    <div th:fragment="emplist" class="container">
+        <h3> Employees Directory </h3>
+        <hr>
+        <a th:href="@{/employees/new}" class="btn btn-primary btn-sm mb-3">
+            New Employee
+        </a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"> First Name </th>
+                <th scope="col"> Last Name </th>
+                <th scope="col"> Email </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.firstName}"></td>
+                <td th:text="${employee.lastName}"></td>
+                <td th:text="${employee.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- end of list of employees -->
+
+    <!-- start of list of employees -->
+    <div th:fragment="prolist" class="container">
+        <h3> Projects Directory </h3>
+        <hr>
+        <a th:href="@{/projects/new}" class="btn btn-primary btn-sm mb-3">
+            New Project
+        </a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"> Project Name </th>
+                <th scope="col"> Project Stage </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="project : ${projects}">
+                <td th:text="${project.name}"></td>
+                <td th:text="${project.stage}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- end of list of projects -->
 
 </html>
